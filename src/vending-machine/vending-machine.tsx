@@ -9,7 +9,7 @@ export function VendingMachine() {
 
   return (
     <div>
-      {goods.map(item => <VendingItem name={item} />)}
+      {goods.map(item => <VendingItem key={item} name={item} />)}
     </div>
   )
 }
