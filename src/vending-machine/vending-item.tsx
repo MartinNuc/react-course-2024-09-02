@@ -15,10 +15,13 @@ export function VendingItem({ name }: Props) {
     setAvailableCount(availableCount - 1);
   }
 
+  const isOutOfStock = availableCount === 0;
+
   return (
     <>
       <button onClick={handleClick}>{availableCount}x</button>
       {name}
+      {isOutOfStock && <div style={{ color: 'red' }}>Out of stock</div>}
     </>
   );
 }
