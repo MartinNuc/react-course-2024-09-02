@@ -1,16 +1,15 @@
-import { Table } from "./by_martin/table";
-
 import './App.css';
+import { Counter } from './by_martin/counter';
+import { VendingMachine } from "./vending-machine/vending-machine";
 
 function App() {
   const jmeno = "Martin";
 
-  const input = [1, 2, 3, 4, 5, 6, 7];
-
   return (
     <>
+    <Counter></Counter>
       <h1>Hello {jmeno}</h1>
-      <Table array={input} columns={3} />
+      <VendingMachine />
     </>
   );
 }
