@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { VendingItem } from "./vending-item";
 import styles from "./vending-machine.module.css";
+import { DropdownButton } from "../design-system/dropdown-button";
+import { AddToWalletInput } from "./add-to-wallet-input";
 
 export type Item = {
   name: string;
@@ -9,6 +11,7 @@ export type Item = {
 };
 
 export function VendingMachine() {
+  const [wallet, setWallet] = useState(0);
   const [cart, setCart] = useState<Item[]>([]);
   const [items, setItems] = useState<Item[]>([
     {
@@ -49,7 +52,18 @@ export function VendingMachine() {
 
   return (
     <div>
-      Total price: {totalPrice},-
+      <div>
+        Total price: {totalPrice},-
+      </div>
+      <div>
+        Coins: {wallet},-
+        <DropdownButton label="Add coins">
+          <button onClick={() => setWallet(wallet + 10)}>+10</button>
+          <button onClick={() => setWallet(wallet + 30)}>+30</button>
+          <button onClick={() => setWallet(wallet + 50)}>+50</button>
+          <AddToWalletInput onAddMoney={(amount) => setWallet(wallet + amount)} />
+        </DropdownButton>
+      </div>
       <div className={styles.vendingItems}>
         {items.map((item) => (
           <VendingItem
