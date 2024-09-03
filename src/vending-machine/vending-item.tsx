@@ -23,6 +23,7 @@ export function VendingItem({ name }: Props) {
   return (
     <>
       <button
+        disabled={isOutOfStock}
         className={cn({ [styles.red]: isOutOfStock })}
         onClick={handleClick}>{availableCount}x</button>
       {name}
