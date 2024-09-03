@@ -12,14 +12,16 @@ export function NumberGenerator({pregeneratedCount}: Props) {
 
   function handleGenerateNew() {
     // DONT
-    // generatedNumbers.push(Math.random());
-    // setGeneratedNumbers(generatedNumbers);
+    console.log('generatedNumbers', generatedNumbers);
+    debugger
+    generatedNumbers.push(Math.random());
+    setGeneratedNumbers(generatedNumbers);
 
     // DO
-    setGeneratedNumbers([
-      ...generatedNumbers,
-      Math.random()
-    ]);
+    // setGeneratedNumbers([
+    //   ...generatedNumbers,
+    //   Math.random()
+    // ]);
   }
 
   return (
@@ -27,7 +29,7 @@ export function NumberGenerator({pregeneratedCount}: Props) {
       <button onClick={handleGenerateNew}>Generate new</button>
       <ul>
         {generatedNumbers.map((number) => (
-          <li>{number}</li>
+          <li key={number}>{number}</li>
         ))}
       </ul>
     </>

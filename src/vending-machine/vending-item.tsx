@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { OutOfStockLabel } from "./out-of-stock-label";
+import styles from './vending-item.module.css';
+import cn from 'classnames';
 
 type Props = {
   name: string;
@@ -19,9 +22,11 @@ export function VendingItem({ name }: Props) {
 
   return (
     <>
-      <button onClick={handleClick}>{availableCount}x</button>
+      <button
+        className={cn({ [styles.red]: isOutOfStock })}
+        onClick={handleClick}>{availableCount}x</button>
       {name}
-      {isOutOfStock && <div style={{ color: 'red' }}>Out of stock</div>}
+      {isOutOfStock && <OutOfStockLabel />}
     </>
   );
 }
