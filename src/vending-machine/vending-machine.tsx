@@ -3,6 +3,7 @@ import { VendingItem } from "./vending-item";
 import styles from "./vending-machine.module.css";
 import { DropdownButton } from "../design-system/dropdown-button";
 import { AddToWalletInput } from "./add-to-wallet-input";
+import { Button } from "../design-system/button";
 
 export type Item = {
   name: string;
@@ -55,12 +56,12 @@ export function VendingMachine() {
       <div>
         Total price: {totalPrice},-
       </div>
-      <div>
+      <div style={{ margin: '20px', background: 'darkblue' }}>
         Coins: {wallet},-
         <DropdownButton label="Add coins">
-          <button onClick={() => setWallet(wallet + 10)}>+10</button>
-          <button onClick={() => setWallet(wallet + 30)}>+30</button>
-          <button onClick={() => setWallet(wallet + 50)}>+50</button>
+          <Button onClick={() => setWallet(wallet + 10)}>+10</Button>
+          <Button onClick={() => setWallet(wallet + 30)}>+30</Button>
+          <Button onClick={() => setWallet(wallet + 50)}>+50</Button>
           <AddToWalletInput onAddMoney={(amount) => setWallet(wallet + amount)} />
         </DropdownButton>
       </div>

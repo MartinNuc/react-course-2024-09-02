@@ -2,6 +2,7 @@ import { OutOfStockLabel } from "./out-of-stock-label";
 import styles from './vending-item.module.css';
 import cn from 'classnames';
 import { Item } from "./vending-machine";
+import { Button } from "../design-system/button";
 
 type Props = {
   item: Item;
@@ -14,10 +15,10 @@ export function VendingItem({ item: { name, availableCount }, onAddToCart }: Pro
 
   return (
     <div>
-      <button
+      <Button
         disabled={isOutOfStock}
         className={cn({ [styles.red]: isOutOfStock })}
-        onClick={onAddToCart}>{availableCount}x</button>
+        onClick={onAddToCart}>{availableCount}x</Button>
       {name}
       {isOutOfStock && <OutOfStockLabel />}
     </div>
