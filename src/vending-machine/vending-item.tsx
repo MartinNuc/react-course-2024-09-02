@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState} from "react";
 import { OutOfStockLabel } from "./out-of-stock-label";
 import styles from './vending-item.module.css';
 import cn from 'classnames';
@@ -8,7 +8,20 @@ type Props = {
 };
 
 export function VendingItem({ name }: Props) {
-  const [availableCount, setAvailableCount] = useState(5);
+
+  const [availableCount, setAvailableCount] = useState(4);
+
+  useEffect(() => {
+    // componentDidMount
+    const timeoutRef = setTimeout(() => {
+      console.log('ahoj');
+    }, 5000);
+
+    return () => {
+      // componentWillUnmount
+      clearTimeout(timeoutRef);
+    }
+  }, []);
 
   function handleClick() {
     if (availableCount <= 0) {

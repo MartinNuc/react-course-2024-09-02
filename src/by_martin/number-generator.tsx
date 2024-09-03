@@ -10,6 +10,9 @@ export function NumberGenerator({pregeneratedCount}: Props) {
     () => [...new Array(pregeneratedCount)].map(() => Math.random())
   );
 
+  const [isVisible, setIsVisible] = useState(false);
+  const [availableCount, setAvailableCount] = useState(5);
+
   function handleGenerateNew() {
     // DONT
     console.log('generatedNumbers', generatedNumbers);
