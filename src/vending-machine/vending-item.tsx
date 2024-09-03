@@ -13,13 +13,13 @@ export function VendingItem({ item: { name, availableCount }, onAddToCart }: Pro
   const isOutOfStock = availableCount === 0;
 
   return (
-    <>
+    <div>
       <button
         disabled={isOutOfStock}
         className={cn({ [styles.red]: isOutOfStock })}
         onClick={onAddToCart}>{availableCount}x</button>
       {name}
       {isOutOfStock && <OutOfStockLabel />}
-    </>
+    </div>
   );
 }
