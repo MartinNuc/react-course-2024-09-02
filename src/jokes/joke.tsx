@@ -1,26 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-type JokeResponse = {
-  value: string;
-};
+import { useJoke } from "./use-joke";
 
 export function Joke() {
-  const [joke, setJoke] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    fetchJoke();
-  }, []);
-
-  async function fetchJoke() {
-    setIsLoading(true);
-    const response = await axios.get<JokeResponse>(
-      "https://api.chucknorris.io/jokes/random"
-    );
-    setJoke(response.data.value);
-    setIsLoading(false);
-  }
+  const { fetchJoke, isLoading, joke } = useJoke();
 
   return (
     <div>
