@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
 type Props = {
   onAddMoney: (amount: number) => void;
@@ -6,6 +6,7 @@ type Props = {
 
 export function AddToWalletInput({onAddMoney}: Props) {
   const [value, setValue] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'Enter') {
@@ -14,8 +15,13 @@ export function AddToWalletInput({onAddMoney}: Props) {
     }
   }
 
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
     <input
+      ref={inputRef}
       type="number"
       value={value}
       onChange={(e) => setValue(e.target.value)}
